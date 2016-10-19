@@ -7,8 +7,8 @@ import App from './components/app';
 window.generate = function generate(count) {
   // generate
   var records = [];
-  var fname = ['Vitali', '~Katsia', 'John', 'Peter', '#Sue', '$Olivia', '<Thomas', '>Sergei', 'Snehal', 'Avinash', 'Divia'];
-  var lname = ['Peterson', 'Rene', 'Johnson-Petrov-Sannikov-Ivanov-Smirnov', 'Cuban', 'Twist', 'Sidorov', 'Vasiliev', 'Yadav', 'Vaishnav'];
+  var fname = ['Oleg', '~Katsia', 'John', 'Viktor', '#Sue', 'JavaScript', '<Thomas', '>Sergei', 'Snehal', 'Oleg', 'Divia'];
+  var lname = ['Peterson', 'Oleg', 'Johnson-Petrov-Sannikov-Ivanov-Smirnov', 'Cuban', 'Twist', 'Sidorov', 'Vasiliev', 'React', 'Vaishnav'];
   // add records
   for (var i = 0; i < count * 1000; i++) {
     records.push({
@@ -22,8 +22,8 @@ window.generate = function generate(count) {
     });
   }
   console.log(records);
-  ReactDOM.render(<App width={600} height={568} header="List of Names" showFooter={true}
+  ReactDOM.render(<App width={1550} height={568} header="List of Names" showFooter={true}
     showToolbar={true} name="grid" records={records} />, document.getElementById('app'));
 };
 
-generate(25);
+generate(35);

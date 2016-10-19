@@ -83,12 +83,6 @@ class GridBody extends Component {
           <div title={record.fname}>{record.fname}</div>
         </td>
         <td className="w2ui-grid-data" >
-          <div title={record.fname}>{record.fname}</div>
-        </td>
-        <td className="w2ui-grid-data" >
-          <div title={record.lname}>{record.lname}</div>
-        </td>
-        <td className="w2ui-grid-data" >
           <div title={record.email}>{record.email}</div>
         </td>
         <td className="w2ui-grid-data-last"></td>
@@ -139,15 +133,6 @@ class GridBody extends Component {
             className="w2ui-grid-data"
             style={{ height: 0, width: 150 }}>
           </th>
-          <th
-            className="w2ui-grid-data"
-            style={{ height: 0, width: 150 }}>
-          </th>
-          <th
-            className="w2ui-grid-data"
-            style={{ height: 0, width: 150 }}>
-          </th>
-
           <th
             className="w2ui-grid-data"
             style={{ height: 0, width: 150 }}>
@@ -228,7 +213,7 @@ export default class App extends React.Component {
       style={{ width: this.props.width, height: this.props.height }}
       name="grid"
       className="w2ui-reset w2ui-grid">
-      <div style={{ width: 598, height: 566 }}>
+      <div style={{ width: 1500, height: 566 }}>
         <div id="gridgridheader" className="w2ui-grid-header" style={{ display: 'none' }}></div>
         <div id="gridgridbody"
           className="w2ui-grid-body"
