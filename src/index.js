@@ -16,8 +16,8 @@ window.generate = function generate(count) {
       personid: i + 1,
       fname: fname[Math.floor(Math.random() * fname.length)],
       lname: lname[Math.floor(Math.random() * lname.length)],
-      email: 'vm@gmail.com',
-      sdate: '1/1/2013',
+      email: 'oleglustenko@gmail.com',
+      sdate: '1/1/2016',
       manager: '--'
     });
   }
