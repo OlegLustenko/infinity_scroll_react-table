@@ -152,12 +152,11 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = this.getDefaultState(this.props);
-    console.log(this.state.visibleStart);
   }
   getDefaultState(props) {
 
     let recordHeight = 25;
-    let recordsPerBody = Math.floor((props.height - 2) / recordHeight);
+    let recordsPerBody = Math.floor((props.height - 50) / recordHeight);
     return {
       total: props.records.length,
       records: props.records,
@@ -170,17 +169,12 @@ export default class App extends React.Component {
     };
   }
 
-  componentWillReceiveProps(nextProps) {
-    this.setState(this.getDefaultState(nextProps));
-    this.scrollState(this.state.scroll);
-  }
-
   scrollState(scroll) {
     let visibleStart = Math.floor(scroll / this.state.recordHeight);
     let visibleEnd = Math.min(visibleStart + this.state.recordsPerBody, this.state.total - 1);
 
     let displayStart = Math.max(0, Math.floor(scroll / this.state.recordHeight) - this.state.recordsPerBody * 1.5);
-    let displayEnd = Math.min(displayStart + 4 * this.state.recordsPerBody, this.state.total - 1);
+    let displayEnd = Math.min(displayStart + 2.5 * this.state.recordsPerBody, this.state.total - 1);
 
     this.setState({
       visibleStart: visibleStart,
@@ -195,26 +189,12 @@ export default class App extends React.Component {
     this.scrollState(this.refs.scrollable.scrollTop);
   }
 
-  formatNumber(number) {
-    return ('' + number).split('').reverse().join('').replace(/(...)/g, '$1,').split('').reverse().join('').replace(/^,/, '');
-  }
-
-  getCount() {
-    console.log(this.state.visibleStart, ':', this.formatNumber(this.state.visibleStart));
-    // console.log(this.formatNumber(this.state.visibleStart));
-    return (this.formatNumber(this.state.visibleStart)) +
-      '-' + (this.formatNumber(this.state.visibleEnd)) +
-      ' of ' + this.formatNumber(this.state.total);
-  }
-
   render() {
-    console.log(this.refs);
     return (<div id="grid"
       style={{ width: this.props.width, height: this.props.height }}
       name="grid"
       className="w2ui-reset w2ui-grid">
       <div style={{ width: 1500, height: 566 }}>
-        <div id="gridgridheader" className="w2ui-grid-header" style={{ display: 'none' }}></div>
         <div id="gridgridbody"
           className="w2ui-grid-body"
           style={{ top: 38, bottom: 24, left: 0, right: 0, height: 504 }}>
@@ -250,12 +230,39 @@ export default class App extends React.Component {
                     <div className="w2ui-resizer" name="2" style={{ height: 25, 'marginLeft': 146, }}></div>
                     <div>Last Name</div>
                   </td>
-                  <td className="w2ui-head" style={{ width: 150, }}>
+                  <td className="w2ui-head" style={{ width: 150 }}>
                     <div className="w2ui-resizer" name="3" style={{ height: 25, 'marginLeft': 146, }}></div>
                     <div>Email</div>
-                  </td><td className="w2ui-head w2ui-head-last" style={{ width: 98, }}>
-                    <div>{String.fromCharCode(160)}</div>
                   </td>
+                  <td className="w2ui-head" style={{ width: 150 }}>
+                    <div className="w2ui-resizer" name="1" style={{ height: 25, 'marginLeft': 146, }}></div>
+                    <div>First Name</div>
+                  </td>
+                  <td className="w2ui-head" style={{ width: 150 }}>
+                    <div className="w2ui-resizer" name="1" style={{ height: 25, 'marginLeft': 146, }}></div>
+                    <div>First Name</div>
+                  </td>
+                  <td className="w2ui-head" style={{ width: 150 }}>
+                    <div className="w2ui-resizer" name="1" style={{ height: 25, 'marginLeft': 146, }}></div>
+                    <div>First Name</div>
+                  </td>
+                  <td className="w2ui-head" style={{ width: 150 }}>
+                    <div className="w2ui-resizer" name="1" style={{ height: 25, 'marginLeft': 146, }}></div>
+                    <div>First Name</div>
+                  </td>
+                  <td className="w2ui-head" style={{ width: 150 }}>
+                    <div className="w2ui-resizer" name="1" style={{ height: 25, 'marginLeft': 146, }}></div>
+                    <div>First Name</div>
+                  </td>
+                  <td className="w2ui-head" style={{ width: 150 }}>
+                    <div className="w2ui-resizer" name="1" style={{ height: 25, 'marginLeft': 146, }}></div>
+                    <div>First Name</div>
+                  </td>
+                  <td className="w2ui-head" style={{ width: 100 }}>
+                    <div className="w2ui-resizer" name="1" style={{ height: 25, 'marginLeft': 146, }}></div>
+                    <div>Email</div>
+                  </td>
+
                 </tr>
               </tbody>
             </table>
