@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
+import shallowCompare from 'react-addons-shallow-compare';
 
 class GridBody extends Component {
   constructor() {
@@ -33,6 +33,7 @@ class GridBody extends Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
+    //return shallowCompare(this, nextProps, nextState);
     return this.state.shouldUpdate;
   }
 
@@ -167,7 +168,6 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = this.getDefaultState(this.props);
-    console.log(this.state.visibleStart);
   }
   getDefaultState(props) {
 
@@ -215,7 +215,6 @@ export default class App extends React.Component {
   }
 
   getCount() {
-    console.log(this.state.visibleStart, ':', this.formatNumber(this.state.visibleStart));
     // console.log(this.formatNumber(this.state.visibleStart));
     return (this.formatNumber(this.state.visibleStart)) +
       '-' + (this.formatNumber(this.state.visibleEnd)) +
@@ -223,7 +222,6 @@ export default class App extends React.Component {
   }
 
   render() {
-    console.log(this.refs);
     return (<div id="grid"
       style={{ width: this.props.width, height: this.props.height }}
       name="grid"
