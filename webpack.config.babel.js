@@ -9,7 +9,7 @@ const NODE_ENV = process.env.NODE_ENV;
 let config = {
   entry: {
     app: path.resolve(__dirname, './src/index'),
-    vendor: ['react', 'react-dom']
+    vendor: ['react', 'react-dom','react-addons-shallow-compare']
   },
   output: {
     path: path.resolve(__dirname, './'),
@@ -50,7 +50,7 @@ let config = {
     contentBase: './',
     port: 3000
   }
-}
+};
 
 
 if (NODE_ENV == 'production') {
