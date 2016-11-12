@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
+import shallowCompare from 'react-addons-shallow-compare';
+
 
 class GridBody extends Component {
   constructor() {
@@ -33,6 +34,7 @@ class GridBody extends Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
+    return shallowCompare(this, nextProps, nextState);
     return this.state.shouldUpdate;
   }
 
@@ -41,16 +43,16 @@ class GridBody extends Component {
     rows[0] = (<tr
       id="gridgridrectop"
       key={0}
-      style={{ height: this.props.displayStart * this.props.recordHeight }}>
+      style={{ height: this.props.visibleStart * this.props.recordHeight }}>
       <td colSpan="200">
       </td>
     </tr>);
 
-    for (let i = this.props.displayStart; i < this.props.displayEnd; ++i) {
+    for (let i = this.props.visibleStart, _i=1; i < this.props.visibleEnd; ++i, _i++) {
       let record = this.props.records[i];
       rows[i + 1] = (<tr
         className={i % 2 === 0 ? 'w2ui-even' : 'w2ui-odd'}
-        key={i + 1}
+        key={_i}
         style={{ height: this.props.recordHeight }}>
         <td className="w2ui-grid-data" >
           <div title={i + 1}>{i + 1}</div>
@@ -90,7 +92,7 @@ class GridBody extends Component {
     }
     rows.push((<tr id="gridgridrecbottom"
       key={rows.length}
-      style={{ height: (this.props.records.length - this.props.displayEnd) * this.props.recordHeight }}>
+      style={{ height: (this.props.records.length - this.props.visibleEnd) * this.props.recordHeight }}>
       <td colSpan="200"></td>
     </tr>));
 
