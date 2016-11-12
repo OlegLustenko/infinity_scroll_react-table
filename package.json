@@ -8,6 +8,7 @@
     "start": "./node_modules/.bin/webpack-dev-server",
     "wp": "./node_modules/.bin/webpack",
     "prod": "set NODE_ENV=production&& npm run build",
+    "produb": "NODE_ENV=production&& npm run build",
     "build": "./node_modules/.bin/webpack -p"
   },
   "dependencies": {
