@@ -202,7 +202,7 @@ export default class App extends React.Component {
           style={{ top: 38, bottom: 24, left: 0, right: 0, height: 504 }}>
           <div id="gridgridrecords"
             className="w2ui-grid-records"
-            style={{ top: 26, 'overflowX': 'hidden', 'overflowY': 'auto' }}
+            style={{ top: 26, 'overflowX': 'hidden', 'overflowY': 'auto', overflowAnchor: 'none' }}
             ref="scrollable"
             onScroll={this.onScroll.bind(this)}>
             <GridBody
