@@ -32,6 +32,6 @@ multiply(myArr);
 
 let test = document.getElementById('qwe');
 
-function ww(row: []): Object[] { return row.map((x: Object) => x); }
+function wwrow(): Object[] { return row.map((x: Object) => x); }
 
 ww();

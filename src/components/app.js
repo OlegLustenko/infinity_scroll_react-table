@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import shallowCompare from 'react-addons-shallow-compare';
 
-
 class GridBody extends Component {
   constructor() {
     super();
@@ -11,6 +10,7 @@ class GridBody extends Component {
       displayStart: 0,
       displayEnd: 0
     };
+    // this.clickEvent = this.clickEvent.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -48,8 +48,9 @@ class GridBody extends Component {
       </td>
     </tr>);
 
-    for (let i = this.props.visibleStart, _i=1; i < this.props.visibleEnd; ++i, _i++) {
+    for (let i = this.props.visibleStart, _i = 1; i < this.props.visibleEnd; ++i, _i++) {
       let record = this.props.records[i];
+      let records = Object.keys(record);
       rows[i + 1] = (<tr
         className={i % 2 === 0 ? 'w2ui-even' : 'w2ui-odd'}
         key={_i}
@@ -57,36 +58,13 @@ class GridBody extends Component {
         <td className="w2ui-grid-data" >
           <div title={i + 1}>{i + 1}</div>
         </td>
-        <td className="w2ui-grid-data" >
-          <div title={record.fname}>{record.fname}</div>
-        </td>
-        <td className="w2ui-grid-data" >
-          <div title={record.fname}>{record.fname}</div>
-        </td>
-        <td className="w2ui-grid-data" >
-          <div title={record.fname}>{record.fname}</div>
-        </td>
-        <td className="w2ui-grid-data" >
-          <div title={record.fname}>{record.fname}</div>
-        </td>
-        <td className="w2ui-grid-data" >
-          <div title={record.fname}>{record.fname}</div>
-        </td>
-        <td className="w2ui-grid-data" >
-          <div title={record.fname}>{record.fname}</div>
-        </td>
-        <td className="w2ui-grid-data" >
-          <div title={record.fname}>{record.fname}</div>
-        </td>
-        <td className="w2ui-grid-data" >
-          <div title={record.fname}>{record.fname}</div>
-        </td>
-        <td className="w2ui-grid-data" >
-          <div title={record.fname}>{record.fname}</div>
-        </td>
-        <td className="w2ui-grid-data" >
-          <div title={record.email}>{record.email}</div>
-        </td>
+        {records.map((x, i)=>{
+          return (
+          <td className="w2ui-grid-data" key={`Row${_i}-Column${i}`}>
+            <div title={record[x]}>{record[x]}</div>
+          </td>)
+        })}
+        
         <td className="w2ui-grid-data-last"></td>
       </tr>);
     }
@@ -154,6 +132,7 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = this.getDefaultState(this.props);
+    this.onScroll = this.onScroll.bind(this);
   }
   getDefaultState(props) {
 
@@ -188,14 +167,19 @@ export default class App extends React.Component {
   }
 
   onScroll(event) {
+    if (this.running) return;
+    this.running = true;
     this.scrollState(this.refs.scrollable.scrollTop);
+    this.running = false;
   }
 
   render() {
-    return (<div id="grid"
+    return (
+      <div>
+      <div id="grid"
       style={{ width: this.props.width, height: this.props.height }}
       name="grid"
-      className="w2ui-reset w2ui-grid">
+      className="w2ui-reset w2ui-grid"> 
       <div style={{ width: 1500, height: 566 }}>
         <div id="gridgridbody"
           className="w2ui-grid-body"
@@ -204,7 +188,7 @@ export default class App extends React.Component {
             className="w2ui-grid-records"
             style={{ top: 26, 'overflowX': 'hidden', 'overflowY': 'auto', overflowAnchor: 'none' }}
             ref="scrollable"
-            onScroll={this.onScroll.bind(this)}>
+            onScroll={this.onScroll}>
             <GridBody
               records={this.state.records}
               total={this.state.records.length}
@@ -270,6 +254,7 @@ export default class App extends React.Component {
             </table>
           </div>
         </div>
+      </div>
       </div>
     </div>);
   }
