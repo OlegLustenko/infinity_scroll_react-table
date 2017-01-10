@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import shallowCompare from 'react-addons-shallow-compare';
 
 class GridBody extends Component {
@@ -169,8 +170,13 @@ export default class App extends React.Component {
   onScroll(event) {
     if (this.running) return;
     this.running = true;
-    this.scrollState(this.refs.scrollable.scrollTop);
+    this.scrollState(ReactDOM.findDOMNode(this).scrollTop);
     this.running = false;
+  }
+
+  componentDidMount() {
+    debugger;
+    this.ss = ReactDOM.findDOMNode(this);
   }
 
   render() {

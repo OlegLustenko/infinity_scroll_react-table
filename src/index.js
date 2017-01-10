@@ -23,7 +23,7 @@ window.generate = function generate(count) {
   }
   console.log(records);
   ReactDOM.render(<App width={1550} height={568} header="List of Names" showFooter={true}
-    showToolbar={true} name="grid" records={records} />, document.getElementById('app'));
+    showToolbar={true} name="grid" records={records} />, document.getElementById('root'));
 };
 
 generate(35);
