@@ -170,13 +170,11 @@ export default class App extends React.Component {
   onScroll(event) {
     if (this.running) return;
     this.running = true;
-    this.scrollState(ReactDOM.findDOMNode(this).scrollTop);
+    this.scrollState(this.refs.scrollable.scrollTop);
     this.running = false;
   }
 
   componentDidMount() {
-    debugger;
-    this.ss = ReactDOM.findDOMNode(this);
   }
 
   render() {
